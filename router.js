@@ -1,6 +1,7 @@
-export class Router {
+export default class Router {
   constructor() {
     this.initRouter();
+    this.popState();
   }
 
   async load(page = "home") {
@@ -11,11 +12,16 @@ export class Router {
       if (promise.ok) {
         const $CONTAINER = document.querySelector("#app");
         $CONTAINER.innerHTML = "";
-        $CONTAINER.innerHTML = await promise.text();
+        localStorage.setItem("page", await promise.text());
+        $CONTAINER.innerHTML = localStorage.getItem("page");
+        // window.history.pushState(
+        //   { data: localStorage.getItem("page") },
+        //   page,
+        //   page
+        // );
       }
     } catch (error) {}
 
-    window.history.pushState({}, "done", page);
     document.title = page;
   }
 
@@ -23,7 +29,13 @@ export class Router {
     const {
       location: { pathname = "/" },
     } = window;
-    const URL = pathname === "/" ? "home" : pathname.replace("/", "");
+    const URL = pathname === "/" ? "/" : pathname.replace("/", "");
     this.load(URL);
+  }
+  popState() {
+    window.addEventListener("popstate", () => {
+      const page = window.location.pathname.replace("/", "");
+      this.load(page);
+    });
   }
 }
