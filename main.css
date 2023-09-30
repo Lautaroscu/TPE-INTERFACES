@@ -21,6 +21,9 @@
 
   --fuentePrincipal: Arial, roboto;
 }
+ul {
+  list-style: none;
+}
 body {
   margin: 0;
   background-color: var(--negro);
@@ -36,7 +39,6 @@ body {
 
 .header-nav-section {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 60px;
@@ -45,18 +47,10 @@ body {
   margin: 0;
 }
 .header .logo-container img {
-  width: 40px;
+  width: 45px;
   heigth: 50px;
 }
-.menu-container {
-  width: 25px;
-  heigth: 325px;
-  margin: 0px;
-  padding: 0px;
-}
-.menu-container svg {
-  color: white;
-}
+
 .user-container {
   display: flex;
   justify-content: center;
@@ -69,6 +63,11 @@ body {
   heigth: 45px;
   width: 45px;
   border-radius: 50px;
+}
+.menu-container img {
+  width: 30px;
+  heigth: 30px;
+  transform: rotate(180deg);
 }
 .logomenu {
   display: flex;
@@ -88,8 +87,12 @@ body {
 .buscador input {
   border-radius: 20px;
   background-color: transparent;
-  border: 0;
+  border: none;
   margin-left: 10px;
+}
+
+.buscador input:focus {
+  border: none;
 }
 
 .buscador {
@@ -99,4 +102,66 @@ body {
   border-radius: 20px;
   background-color: var(--gris_oscuro);
   padding: 5px;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.footer .div1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+}
+.footer .div1 .redes {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+.footer .div1 .redes li img {
+  height: 30px;
+  width: 30px;
+}
+.div2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.flags {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  gap: 10px;
+}
+.flags li img {
+  height: 20px;
+  width: 20px;
+}
+
+.nav-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.column {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 5px;
 }
