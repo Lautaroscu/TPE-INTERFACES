@@ -4,38 +4,58 @@ export default class Router {
     this.popState();
   }
 
-  async load(page = "home") {
-    try {
-      const promise = await fetch(
-        `${window.location.origin}/src/pages/${page}.html`
-      );
-      if (promise.ok) {
-        const $CONTAINER = document.querySelector("#app");
-        $CONTAINER.innerHTML = "";
-        localStorage.setItem("page", await promise.text());
-        $CONTAINER.innerHTML = localStorage.getItem("page");
-        // window.history.pushState(
-        //   { data: localStorage.getItem("page") },
-        //   page,
-        //   page
-        // );
-      }
-    } catch (error) {}
+  static getPageUrl(page) {
+    return `${window.location.origin}/src/pages/${page}`;
+  }
+  beforeRefresh() {
+    this.initRouter();
+    this.beforeRefresh();
+  }
+
+  static renderPage(content) {
+    const $CONTAINER = document.querySelector("#app");
+    $CONTAINER.innerHTML = "";
+    $CONTAINER.innerHTML = content;
+  }
+
+  static updateHistoryAndTitle(page, content) {
+    history.pushState(content, page, page);
 
     document.title = page;
   }
 
-  initRouter() {
-    const {
-      location: { pathname = "/" },
-    } = window;
-    const URL = pathname === "/" ? "/" : pathname.replace("/", "");
-    this.load(URL);
+  static handleError(error) {
+    console.error(error);
+    alert("Ocurrió un error al cargar la página");
   }
-  popState() {
-    window.addEventListener("popstate", () => {
+
+  async load(page = "home", update = true) {
+    try {
+      const promise = await fetch(Router.getPageUrl(page));
+      if (promise.ok) {
+        const content = await promise.text();
+
+        localStorage.setItem("page", content);
+        Router.renderPage(content);
+        if (update)
+          // Router.updateHistoryAndTitle(page, localStorage.getItem("page"));
+          return content;
+      }
+    } catch (error) {
+      Router.handleError(error);
+    }
+  }
+
+  initRouter() {
+    const page = window.location.pathname.replace("/", "") || "home";
+    this.load(page);
+  }
+
+  async popState() {
+    window.addEventListener("popstate", async () => {
       const page = window.location.pathname.replace("/", "");
-      this.load(page);
+      const content = await this.load(page);
+      Router.updateHistoryAndTitle(page, content);
     });
   }
 }

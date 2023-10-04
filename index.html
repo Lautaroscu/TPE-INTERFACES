@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="/src/styles/juego.css" />
     <script
       src="https://kit.fontawesome.com/41bcea2ae3.js"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="./main.js"></script>
   </head>
   <body>
+    <img src="/src/assets/ImagesGames/fortnite.jpg" alt="" />
     <header class="header">
       <div class="header-nav-section">
         <div class="logomenu">
@@ -20,7 +23,7 @@
               alt="menu"
             />
           </div>
-          <figure class="logo-container">
+          <figure id="logo" class="logo-container">
             <img
               src="./src/assets/images/Playstation_logo_colour.svg.png"
               alt="logo play station"
@@ -39,6 +42,7 @@
           </div>
         </div>
       </div>
+      <button id="juego">Juegos</button>
     </header>
     <div id="app"></div>
 
@@ -103,7 +107,7 @@
                 src="./src/assets/svgs/list_FILL0_wght400_GRAD0_opsz24.svg"
                 alt="categorias de juegos"
               />
-              <p>Categoria de juegos</p>
+              <p>Categorias</p>
             </div>
           </div>
           <div class="column">
@@ -125,7 +129,7 @@
                 src="./src/assets/svgs/book.svg"
                 alt="Terms and conditions svg list"
               />
-              <p>Terminos y condiciones</p>
+              <p>Terminos</p>
             </div>
             <div class="item">
               <img src="./src/assets/svgs/lock.svg" alt="Privacy svg" />
@@ -135,7 +139,5 @@
         </div>
       </div>
     </footer>
-
-    <script type="module" src="./main.js"></script>
   </body>
 </html>
