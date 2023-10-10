@@ -37,7 +37,7 @@ a {
 body {
   margin: 0%;
   padding: 0%;
-  background: url("/src/assets/images/backgroundloginregistro.jpg") no-repeat;
+  background: url("../assets/images/backgroundloginregistro.jpg") no-repeat;
   letter-spacing: var(--interletrado);
   color: var(--blanco);
   font: var(--body);
