@@ -958,4 +958,16 @@ body {
   .cta:active {
     transform: scale(0.96);
   }
+
+  .user-section .userOptions .iconsOptions,
+  .nombresOptions {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
+  }
+  .user-section 
+  .nombresOptions { 
+    padding-bottom : 18px;
+    
 }
