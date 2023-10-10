@@ -140,7 +140,7 @@
           </div>
         </div>
         <button class="pulse">
-          <a href="home.html" id="registroButton">Registrarme</a>
+          <a id="registroButton">Registrarme</a>
         </button>
 
         <div class="separador">
@@ -172,6 +172,7 @@
       document
         .getElementById("registroButton")
         .addEventListener("click", function () {
+          console.log(msj);
           document.querySelector(".registrarse").style.opacity = 0;
           msj.style.display = "block";
 
