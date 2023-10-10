@@ -19,8 +19,8 @@ let userIMG = userContainerIMG.childNodes[1];
 document.querySelector(`.user-container`).addEventListener("click", (e) => {
   open = !open;
   userIMG.src = open
-    ? "/src/assets/svgs/close_FILL1_wght400_GRAD0_opsz24.svg"
-    : "/src/assets/images/user.avif";
+    ? "./src/assets/svgs/close_FILL1_wght400_GRAD0_opsz24.svg"
+    : "./src/assets/images/user.avif";
   document.querySelector(".user-section").classList.toggle("showMenuUser");
   document.querySelector(".home").classList.toggle("shadow");
 });
