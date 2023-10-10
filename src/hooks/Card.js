@@ -82,9 +82,9 @@ export default class Card {
     this.#carritoAdd = document.createElement("img");
     this.#carritoRemove = document.createElement("img");
     this.#carritoAdd.src =
-      "/src/assets/svgs/add_shopping_cart_FILL1_wght400_GRAD0_opsz24.svg";
+      "./src/assets/svgs/add_shopping_cart_FILL1_wght400_GRAD0_opsz24.svg";
     this.#carritoRemove.src =
-      "/src/assets/svgs/remove_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg";
+      "./src/assets/svgs/remove_shopping_cart_FILL0_wght400_GRAD0_opsz24.svg";
     this.#carritoAdd.classList.add("add");
     this.#carritoRemove.classList.add("remove");
 
@@ -105,7 +105,7 @@ export default class Card {
     CardContainer.appendChild(img2);
     const flag = this.#adquirido ? getFlagAdquirido() : getFlagPrecio();
 
-    botonJugar.src = "/src/assets/svgs/jugar.svg";
+    botonJugar.src = "./src/assets/svgs/jugar.svg";
     if (this.#esPago) {
       CardContainer.appendChild(carritoContainer);
       if (!this.#adquirido) {
