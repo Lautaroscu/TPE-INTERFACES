@@ -1,26 +1,45 @@
 import Router from "./router.js";
-import {
-  showCarruselGratis,
-  showCarruselPago,
-} from "./src/components/Carruseles.js";
+import { showCarruseles, showDestacados } from "./src/components/Carruseles.js";
 document.addEventListener("DOMContentLoaded", function () {
   const router = new Router();
-  document.getElementById("logo").addEventListener("click", Home);
+  document.querySelector("#goHome").addEventListener("click", Home);
+
+  document
+    .getElementById("cerrarSesion")
+    .addEventListener("click", async () => {
+      await router.load("login");
+    });
+
+  document.querySelector(".menu-container").addEventListener("click", () => {
+    document.querySelector(".menuIMG").classList.toggle("rotate180");
+    document.querySelector(".nav").classList.toggle("show");
+  });
+  let open = false;
+  let userContainerIMG = document.querySelector(".user-container");
+  let userContainer = document.querySelector(".user-section");
+  let userIMG = userContainerIMG.childNodes[1];
+  document.querySelector(`.user-container`).addEventListener("click", (e) => {
+    open = !open;
+    userIMG.src = open
+      ? "/src/assets/svgs/close_FILL1_wght400_GRAD0_opsz24.svg"
+      : "/src/assets/images/user.avif";
+    document.querySelector(".user-section").classList.toggle("showMenuUser");
+    document.querySelector(".home").classList.toggle("shadow");
+  });
 
   function App() {
     Home();
-    Juego();
   }
 
   async function Home() {
     await router.load();
-    showCarruselGratis();
-    showCarruselPago();
-  }
-  function Juego() {
+    showCarruseles();
+    showDestacados();
     document
-      .getElementById("juego")
-      .addEventListener("click", async () => await router.load("juego"));
+      .querySelector(".botonContainer")
+      .addEventListener("click", async () => {
+        await router.load("juego");
+      });
   }
 
   App();

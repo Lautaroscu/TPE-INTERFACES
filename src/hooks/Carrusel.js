@@ -17,4 +17,10 @@ export default class Carrusel {
   getCarrusel() {
     return this.#container;
   }
+  getCard(index) {
+    return this.#cards[index];
+  }
+  getCards() {
+    return this.#cards;
+  }
 }
