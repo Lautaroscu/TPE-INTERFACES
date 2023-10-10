@@ -36,7 +36,7 @@ async function Home() {
   document
     .querySelector(".botonContainer")
     .addEventListener("click", async () => {
-      await router.load("juego");
+      router.load("juego");
     });
 }
 
