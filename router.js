@@ -5,7 +5,7 @@ export default class Router {
   }
 
   static getPageUrl(page) {
-    return `${window.location.origin}/src/pages/${page}`;
+    return `${window.location.origin}./src/pages/${page}`;
   }
   beforeRefresh() {
     this.initRouter();
