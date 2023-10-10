@@ -37,15 +37,14 @@ async function Home() {
     document.getElementById("app").innerHTML = `
      
      
-     
-     <nav class="navbar">Home > Categoria > Puzzles > <span>4 en linea </span></nav>
+  <nav class="navbar">Home > Categoria > Puzzles > <span>4 en linea </span></nav>
 <section class="paginaJuego">
   <div class="juego">
     <div class="nombresJugadores">
       <div class="player">
         <h3>CAPITAN AMERICA</h3>
         <img
-          src="../../assets/images/capitanAmetica.jpg"
+          src="./src/assets/images/capitanAmetica.jpg"
           alt="imagen cap america"
         />
         <h2>2</h2>
@@ -53,17 +52,17 @@ async function Home() {
       <h2>-</h2>
       <div class="player">
         <h2>0</h2>
-        <img src="../../assets/images/spidermean.jpg" alt="imagen spiderman" />
+        <img src="./src/assets/images/spidermean.jpg" alt="imagen spiderman" />
         <h3>SPIDERMAN</h3>
       </div>
     </div>
 
-    <img src="../../assets/images/juego.jpg" alt="Juego 4 en linea tabla" />
+    <img src="./src/assets/images/juego.jpg" alt="Juego 4 en linea tabla" />
 
     <section>
       <a id="share"
         ><img
-          src="../../assets/svgs/share_FILL1_wght400_GRAD0_opsz24.svg"
+          src="./src/assets/svgs/share_FILL1_wght400_GRAD0_opsz24.svg"
           alt="Compartir"
       /></a>
       <div class="compartirBody">
@@ -113,12 +112,12 @@ async function Home() {
     <div class="linkVideo">
       <span>https://youtu.be/pht2Bf1WkOA</span>
 
-      <img src="../../assets/images/Video-cuatroLinea.jpg" alt="" />
+      <img src="./src/assets/images/Video-cuatroLinea.jpg" alt="" />
     </div>
 
     <div class="coments">
       <img
-        src="../../assets/svgs/forum_FILL1_wght400_GRAD0_opsz24.svg"
+        src="./src/assets/svgs/forum_FILL1_wght400_GRAD0_opsz24.svg"
         alt="Imagen de la caja de  comentarios"
       />
       <h2>COMENTARIOS</h2>
@@ -129,17 +128,17 @@ async function Home() {
         <div class="comentario">
           <div class="parteArribaComent">
             <div class="logoNombre">
-              <img src="../../assets/images/logouser.png" alt="LogoUsuario" />
+              <img src="./src/assets/images/logouser.png" alt="LogoUsuario" />
               <p class="nombre">Miguelito</p>
               <div class="notificacion">2</div>
             </div>
             <div>
               <img
-                src="../../assets/svgs/thumb_up_FILL1_wght400_GRAD0_opsz24.svg"
+                src="./src/assets/svgs/thumb_up_FILL1_wght400_GRAD0_opsz24.svg"
                 alt="like"
               />
               <img
-                src="../../assets/svgs/thumb_down_FILL1_wght400_GRAD0_opsz24.svg"
+                src="./src/assets/svgs/thumb_down_FILL1_wght400_GRAD0_opsz24.svg"
                 alt="dislike"
               />
             </div>
@@ -154,17 +153,17 @@ async function Home() {
         <div class="comentarioPublicado">
           <div class="parteArribaComent">
             <div class="logoNombre">
-              <img src="../../assets/images/user24.png" alt="LogoUsuario" />
+              <img src="./src/assets/images/user24.png" alt="LogoUsuario" />
               <p class="nombre">Miguelito</p>
               <div class="notificacion">2</div>
             </div>
             <div>
               <img
-                src="../../assets/svgs/thumb_up_FILL1_wght400_GRAD0_opsz24.svg"
+                src="./src/assets/svgs/thumb_up_FILL1_wght400_GRAD0_opsz24.svg"
                 alt="like"
               />
               <img
-                src="../../assets/svgs/thumb_down_FILL1_wght400_GRAD0_opsz24.svg"
+                src="./src/assets/svgs/thumb_down_FILL1_wght400_GRAD0_opsz24.svg"
                 alt="dislike"
               />
             </div>
@@ -172,7 +171,7 @@ async function Home() {
           <div class="alinear">
             <p>MI COMENTARIOO</p>
             <img
-              src="../../assets/images/logouser.png"
+              src="./src/assets/images/logouser.png"
               alt="Lapiz para editar comen"
             />
           </div>
@@ -181,17 +180,17 @@ async function Home() {
         <div class="comentarioPublicado">
           <div class="parteArribaComent">
             <div class="logoNombre">
-              <img src="../../assets/images/user24.png" alt="LogoUsuario" />
+              <img src="./src/assets/images/user24.png" alt="LogoUsuario" />
               <p class="nombre">Miguelito</p>
               <div class="notificacion">2</div>
             </div>
             <div>
               <img
-                src="../../assets/svgs/thumb_up_FILL1_wght400_GRAD0_opsz24.svg"
+                src="./src/assets/svgs/thumb_up_FILL1_wght400_GRAD0_opsz24.svg"
                 alt="like"
               />
               <img
-                src="../../assets/svgs/thumb_down_FILL1_wght400_GRAD0_opsz24.svg"
+                src="./src/assets/svgs/thumb_down_FILL1_wght400_GRAD0_opsz24.svg"
                 alt="dislike"
               />
             </div>
@@ -203,11 +202,12 @@ async function Home() {
       </div>
 
       <aside class="publicidad">
-        <img src="../../assets/images/fondoPubli.png" alt="fondo publicidad" />
+        <img src="./src/assets/images/fondoPubli.png" alt="fondo publicidad" />
       </aside>
     </div>
   </div>
 </section>
+
 
      
      
