@@ -966,8 +966,7 @@ body {
     flex-direction: column;
     text-align: start;
   }
-  .user-section 
-  .nombresOptions { 
-    padding-bottom : 18px;
-    
+  .user-section .nombresOptions {
+    padding-bottom: 18px;
+  }
 }

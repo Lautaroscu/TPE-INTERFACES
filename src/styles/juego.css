@@ -99,7 +99,7 @@ nav span {
 
 .linkVideo img {
   margin-top: 3%;
-  width: fit-content;
+  width: 600px;
 }
 
 .coments {
@@ -121,6 +121,10 @@ nav span {
   height: 100px;
   width: 550px;
   padding: 4%;
+}
+.comments img {
+  height: 30px;
+  width: 30px;
 }
 .publi-coments {
   gap: 400px;
