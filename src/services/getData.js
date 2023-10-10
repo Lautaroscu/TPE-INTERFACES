@@ -158,32 +158,32 @@ export const juegosDestacados = [
   {
     name: "4 en linea",
     description: "Un juego de disparos en línea",
-    image: "/src/assets/images/4ENLIENA.jpg",
+    image: "./src/assets/images/4ENLIENA.jpg",
   },
   {
     name: "Dota 2",
     description: "Un juego de estrategia en línea",
-    image: "/src/assets/GamesImages/dota.jpg",
+    image: "./src/assets/GamesImages/dota.jpg",
   },
   {
     name: "League of Legends",
     description: "Un juego de estrategia en línea",
-    image: "/src/assets/GamesImages/lol2.jpg",
+    image: "./src/assets/GamesImages/lol2.jpg",
   },
   {
     name: "World of Warcraft",
     description: "Un juego de rol en línea multijugador masivo",
-    image: "/src/assets/GamesImages/wc2.jpg",
+    image: "./src/assets/GamesImages/wc2.jpg",
   },
   {
     name: "Diablo III",
     description: "Un juego de rol de acción en línea",
-    image: "/src/assets/GamesImages/diablo2.jpg",
+    image: "./src/assets/GamesImages/diablo2.jpg",
   },
   {
     name: "StarCraft II",
     description: "Un juego de estrategia en tiempo real",
-    image: "/src/assets/GamesImages/stf2.jpg",
+    image: "./src/assets/GamesImages/stf2.jpg",
   },
 ];
 
