@@ -36,9 +36,7 @@ export default class Router {
           // Router.updateHistoryAndTitle(page, localStorage.getItem("page"));
           return content;
       }
-    } catch (error) {
-      Router.handleError(error);
-    }
+    } catch (error) {}
   }
 
   initRouter() {
