@@ -24,11 +24,6 @@ export default class Router {
     document.title = page;
   }
 
-  static handleError(error) {
-    console.error(error);
-    alert("Ocurrió un error al cargar la página");
-  }
-
   async load(page = "home", update = true) {
     try {
       const promise = await fetch(Router.getPageUrl(page));
