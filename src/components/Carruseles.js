@@ -139,7 +139,9 @@ export function showDestacados() {
     destacado.appendChild(cardDestacado.render());
   });
   const { previousElementSibling, nextElementSibling, children } = destacado;
+
   const widthDestacado = children[0].offsetWidth;
+  console.log(widthDestacado);
   previousElementSibling.addEventListener("click", () => {
     destacado.scrollLeft += -1 * widthDestacado;
   });

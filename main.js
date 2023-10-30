@@ -38,19 +38,19 @@ async function Home() {
       window.location.href = "./juego.html";
     });
 }
-document.querySelector(".home").style.display = "none";
+document.querySelector(".home").style.opacity = 0;
 CSS.registerProperty({
   name: "--p",
   syntax: "<integer>",
   initialValue: 0,
   inherits: true,
 });
-// Espera 5 segundos (5000 milisegundos) y luego oculta el elemento con la clase ".Xd"
+
 function ocultarElementoDespuesDe5Segundos() {
   setTimeout(function () {
     document.querySelector(".loadingDiv").style.display = "none";
     console.log(document.querySelector(".home"));
-    document.querySelector(".home").style.display = "block";
+    document.querySelector(".home").style.opacity = 1;
   }, 5000);
 }
 
