@@ -19,7 +19,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 1200px;
-  height: 500px;
+  height: 550px;
   background: var(--blanco);
   color: var(--negro);
   align-items: center;
@@ -250,4 +250,13 @@
   width: 100px;
   border-radius: 10px;
   background-color: var(--primario-c1);
+}
+
+.row {
+  height: 50px;
+  width: 50px;
+  background: blue;
+}
+.row:hover {
+  background: yellow;
 }
