@@ -58,7 +58,9 @@ export default class Ficha {
   }
   soyIgual(otro) {
     if (otro.getCara() != null) {
-      return this.getCara().src == otro.getCara().src;
+      return (
+        this.getCara().src == otro.getCara().src && otro.getId() != this.getId()
+      );
     }
 
     return false;

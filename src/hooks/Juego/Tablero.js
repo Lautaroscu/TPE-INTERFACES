@@ -3,8 +3,7 @@ import Ficha from "./Ficha.js";
 export default class Tablero {
   #columnas;
   #filas;
-  #img1;
-  #img2;
+
   #context;
   #width;
   #height;
@@ -15,8 +14,7 @@ export default class Tablero {
   constructor(
     filas,
     columnas,
-    img1,
-    img2,
+
     contex,
     canvas,
     width,
@@ -26,8 +24,6 @@ export default class Tablero {
   ) {
     this.#filas = filas;
     this.#columnas = columnas;
-    this.#img1 = img1;
-    this.#img2 = img2;
     this.#height = height;
     this.#width = width;
     this.#context = contex;
@@ -56,8 +52,7 @@ export default class Tablero {
     let nuevoWidth = this.#x + fichaWidth / 2;
     let hovers = document.getElementById("hovers");
     hovers.style.width = `${this.#width}px`;
-    let cara = new Image();
-    cara.src = "./src/assets/images/spidermean.jpg";
+
     for (let i = 0; i < this.#columnas; i++) {
       let hover = document.createElement("div");
       hover.classList.add("row");
@@ -96,10 +91,8 @@ export default class Tablero {
     }
     return false;
   }
-  cambiarFicha(c, f) {
-    let newimage = new Image();
-    newimage.src = "./src/assets/images/user.avif";
-    this.tablero[c][f].setCara(newimage);
+  cambiarFicha(c, f, img) {
+    this.tablero[c][f].setCara(img);
     this.showTablero();
   }
   getFichaByPosXY(x, y) {
@@ -125,69 +118,138 @@ export default class Tablero {
     const fila = this.buscarFilaDisponible(columna);
     if (fila == null) throw Error("No hay espacio en el tablero");
     else {
-      this.cambiarFicha(columna, fila);
+      let img2 = new Image();
+
+      img2.src = "./src/assets/images/spidermean.jpg";
+      this.cambiarFicha(columna, fila, ficha);
       return fila;
     }
   }
 
   verificarDiagonal1(columna, fila) {
-    console.log({ c: columna, f: fila });
-
-    let contadorAux = 1;
-    let iguales = [];
     let ficha = this.tablero[columna][fila];
-    let diagonalArriba =
-      this.tablero[columna + contadorAux][fila - contadorAux];
+
+    let Iguales = [];
+
+    Iguales.push(ficha);
+    let contador = 1;
 
     while (
-      ficha.soyIgual(diagonalArriba) &&
-      contadorAux < 4 &&
-      fila > 0 &&
-      columna < this.#columnas - 1
+      contador < 4 &&
+      columna + contador <= this.#columnas - 1 &&
+      fila - contador >= 0
     ) {
-      contadorAux++;
+      console.log("d1");
+      if (ficha.soyIgual(this.tablero[columna + contador][fila - contador])) {
+        Iguales.push(this.tablero[columna + contador][fila - contador]);
+        contador = Iguales.length;
+      } else break;
     }
-    if (columna > 0 && fila < this.#filas - 1) {
-      let diagonalAbajo =
-        this.tablero[columna - contadorAux][fila + contadorAux];
-      while (ficha.soyIgual(diagonalAbajo) && contadorAux < 4) {
-        contadorAux++;
+    if (contador < 4) {
+      let contadorAUX = 1;
+      while (
+        contador < 4 &&
+        columna - contadorAUX >= 0 &&
+        fila + contadorAUX <= this.#filas - 1
+      ) {
+        if (
+          ficha.soyIgual(
+            this.tablero[columna - contadorAUX][fila + contadorAUX]
+          )
+        ) {
+          Iguales.push(this.tablero[columna - contadorAUX][fila + contadorAUX]);
+          contador = Iguales.length;
+          contadorAUX++;
+        } else break;
       }
     }
 
-    console.log(contadorAux);
-    return contadorAux;
+    return Iguales;
   }
 
   verificarDiagonal2(columna, fila) {
-    let contador = 1;
-    let iguales = [];
     let ficha = this.tablero[columna][fila];
-    let diagonalArriba = this.tablero[columna - contador][fila - contador];
 
-    while (
-      ficha.soyIgual(diagonalArriba) &&
-      contador < 4 &&
-      fila > 0 &&
-      columna > 0
-    ) {
-      contador++;
+    let Iguales = [];
+    Iguales.push(ficha);
+    let contador = 1;
+
+    while (columna - contador >= 0 && fila - contador >= 0 && contador < 4) {
+      if (ficha.soyIgual(this.tablero[columna - contador][fila - contador])) {
+        Iguales.push(this.tablero[columna - contador][fila - contador]);
+      } else break;
     }
-    if (
-      columna + contador < this.#columnas - 1 &&
-      fila + contador < this.#filas - 1
-    ) {
-      let diagonalAbajo = this.tablero[columna + contador][fila + contador];
+    if (contador < 4) {
+      let contadorAUX = 1;
       while (
-        ficha.soyIgual(diagonalAbajo) &&
-        contador < 4 &&
-        fila < this.#filas - 1 &&
-        columna > 0
+        columna + contadorAUX <= this.#columnas - 1 &&
+        fila + contadorAUX <= this.#filas - 1 &&
+        contador < 4
       ) {
-        contador++;
+        console.log("d2");
+        if (
+          ficha.soyIgual(
+            this.tablero[columna + contadorAUX][fila + contadorAUX]
+          )
+        ) {
+          Iguales.push(this.tablero[columna + contadorAUX][fila + contadorAUX]);
+          contadorAUX++;
+          contador = Iguales.length;
+          console.log({ c: contador, l: Iguales.length });
+        } else break;
       }
     }
+
+    return Iguales;
   }
+  verificarFila(columna, fila) {
+    let ficha = this.tablero[columna][fila];
+    let contador = 1;
+    let Iguales = [];
+    Iguales.push(ficha);
+
+    while (columna - contador >= 0 && contador < 4) {
+      if (ficha.soyIgual(this.tablero[columna - contador][fila])) {
+        console.log("Iguaal IZQ");
+        Iguales.push(this.tablero[columna - contador][fila]);
+        contador = Iguales.length;
+        console.log(Iguales.length);
+      } else break;
+    }
+    if (contador < 4) {
+      let contadorAUX = 1;
+      while (
+        columna + contadorAUX < this.#columnas - 1 &&
+        contador < 4 &&
+        this.tablero[columna + contadorAUX][fila].getCara() != null
+      ) {
+        console.log("fil");
+        if (ficha.soyIgual(this.tablero[columna + contadorAUX][fila])) {
+          console.log("Iguaal Der");
+          Iguales.push(this.tablero[columna + contadorAUX][fila]);
+          contadorAUX++;
+          contador = Iguales.length;
+        } else break;
+      }
+    }
+    return Iguales;
+  }
+  verificarColumna(columna, fila) {
+    let ficha = this.tablero[columna][fila];
+    let contador = 1;
+    let Iguales = [];
+    Iguales.push(ficha);
+    while (contador < 4 && fila + contador <= this.#filas - 1) {
+      console.log("col");
+      if (ficha.soyIgual(this.tablero[columna][fila + contador])) {
+        Iguales.push(this.tablero[columna][fila + contador]);
+        contador = Iguales.length;
+      } else break;
+    }
+    console.log(Iguales);
+    return Iguales;
+  }
+
   getPosFichaById(id) {
     for (let i = 0; i < this.#columnas; i++) {
       for (let j = 0; j < this.#filas; j++) {
@@ -198,6 +260,7 @@ export default class Tablero {
     }
     return -1;
   }
+
   isEmpty() {
     for (let i = 0; i < this.#columnas; i++) {
       for (let j = 0; j < this.#filas; j++) {
