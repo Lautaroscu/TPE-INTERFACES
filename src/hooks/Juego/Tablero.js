@@ -10,20 +10,9 @@ export default class Tablero {
   #canvas;
   #x;
   #y;
+  #N;
 
-  constructor(
-    filas,
-    columnas,
-
-    contex,
-    canvas,
-    width,
-    height,
-    x,
-    y
-  ) {
-    this.#filas = filas;
-    this.#columnas = columnas;
+  constructor(contex, canvas, width, height, x, y, n) {
     this.#height = height;
     this.#width = width;
     this.#context = contex;
@@ -31,6 +20,12 @@ export default class Tablero {
     this.tablero = [];
     this.#x = x;
     this.#y = y;
+    this.#N = n;
+    this.#filas = this.#N + 2;
+    this.#columnas = this.#N * 2 - 1;
+    Ficha.setSize(
+      Math.min(this.#width / this.#columnas, this.#height / this.#filas) / 2 - 2
+    );
     this.draw();
   }
 
@@ -85,6 +80,15 @@ export default class Tablero {
       });
     }
   }
+  getSize() {
+    let cont = 0;
+    for (let i = 0; i < this.#columnas; i++) {
+      for (let j = 0; j < this.#filas; j++) {
+        cont++;
+      }
+    }
+    return cont;
+  }
   estaOcupado(fila, columna) {
     if (this.tablero[columna][fila].getCara() != null) {
       return true;
@@ -135,7 +139,7 @@ export default class Tablero {
     let contador = 1;
 
     while (
-      contador < 4 &&
+      contador < this.#N &&
       columna + contador <= this.#columnas - 1 &&
       fila - contador >= 0
     ) {
@@ -145,13 +149,15 @@ export default class Tablero {
         contador = Iguales.length;
       } else break;
     }
-    if (contador < 4) {
+    if (contador < this.#N) {
       let contadorAUX = 1;
       while (
-        contador < 4 &&
+        contador < this.#N &&
         columna - contadorAUX >= 0 &&
         fila + contadorAUX <= this.#filas - 1
       ) {
+        console.log("d1");
+
         if (
           ficha.soyIgual(
             this.tablero[columna - contadorAUX][fila + contadorAUX]
@@ -174,12 +180,19 @@ export default class Tablero {
     Iguales.push(ficha);
     let contador = 1;
 
-    while (columna - contador >= 0 && fila - contador >= 0 && contador < 4) {
+    while (
+      columna - contador >= 0 &&
+      fila - contador >= 0 &&
+      contador < this.#N
+    ) {
+      console.log("d2");
+
       if (ficha.soyIgual(this.tablero[columna - contador][fila - contador])) {
         Iguales.push(this.tablero[columna - contador][fila - contador]);
+        contador = Iguales.length;
       } else break;
     }
-    if (contador < 4) {
+    if (contador < this.#N) {
       let contadorAUX = 1;
       while (
         columna + contadorAUX <= this.#columnas - 1 &&
@@ -208,7 +221,8 @@ export default class Tablero {
     let Iguales = [];
     Iguales.push(ficha);
 
-    while (columna - contador >= 0 && contador < 4) {
+    while (columna - contador >= 0 && contador < this.#N) {
+      console.log("fil");
       if (ficha.soyIgual(this.tablero[columna - contador][fila])) {
         console.log("Iguaal IZQ");
         Iguales.push(this.tablero[columna - contador][fila]);
@@ -216,11 +230,11 @@ export default class Tablero {
         console.log(Iguales.length);
       } else break;
     }
-    if (contador < 4) {
+    if (contador < this.#N) {
       let contadorAUX = 1;
       while (
         columna + contadorAUX < this.#columnas - 1 &&
-        contador < 4 &&
+        contador < this.#N &&
         this.tablero[columna + contadorAUX][fila].getCara() != null
       ) {
         console.log("fil");
@@ -239,14 +253,13 @@ export default class Tablero {
     let contador = 1;
     let Iguales = [];
     Iguales.push(ficha);
-    while (contador < 4 && fila + contador <= this.#filas - 1) {
+    while (contador < this.#N && fila + contador <= this.#filas - 1) {
       console.log("col");
       if (ficha.soyIgual(this.tablero[columna][fila + contador])) {
         Iguales.push(this.tablero[columna][fila + contador]);
         contador = Iguales.length;
       } else break;
     }
-    console.log(Iguales);
     return Iguales;
   }
 
@@ -270,5 +283,8 @@ export default class Tablero {
       }
     }
     return true;
+  }
+  getN() {
+    return this.#N;
   }
 }

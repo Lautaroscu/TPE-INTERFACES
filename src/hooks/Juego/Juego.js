@@ -9,26 +9,14 @@ class Juego {
   #jugador2;
   #jugadorActual;
   #tiempoXJugador;
-  #filas;
-  #columnas;
   #tablero;
 
   constructor(j1, j2, tJ, f, c) {
     this.#jugador1 = j1;
     this.#jugador2 = j2;
     this.#tiempoXJugador = tJ;
-    this.#filas = f;
-    this.#columnas = c;
-    this.#tablero = new Tablero(
-      this.#filas,
-      this.#columnas,
-      this.#ctx,
-      this.#canvas,
-      700,
-      400,
-      250,
-      0
-    );
+
+    this.#tablero = new Tablero(this.#ctx, this.#canvas, 700, 400, 250, 0, 4);
     this.jugadores = [this.#jugador1, this.#jugador2];
 
     this.verificarGanador();
@@ -42,23 +30,11 @@ class Juego {
           columna,
           this.#jugadorActual.getFicha()
         );
-        console.log({ actual: this.#jugadorActual });
 
-        this.setTurno(this.getProximoJugador());
-        if (
-          this.#tablero.verificarDiagonal1(columna, fila).length == 4 ||
-          this.#tablero.verificarDiagonal2(columna, fila).length == 4 ||
-          this.#tablero.verificarFila(columna, fila).length == 4 ||
-          this.#tablero.verificarColumna(columna, fila).length == 4
-        ) {
-          alert("gano");
+        if (this.hayUnGanador(columna, fila)) {
+          alert(`gano ${this.#jugadorActual.getNombre()}`);
         }
-        console.log({
-          d1: this.#tablero.verificarDiagonal1(columna, fila),
-          d2: this.#tablero.verificarDiagonal2(columna, fila),
-          vF: this.#tablero.verificarFila(columna, fila),
-          vC: this.#tablero.verificarColumna(columna, fila),
-        });
+        this.setTurno(this.getProximoJugador());
       });
     });
   }
@@ -73,6 +49,16 @@ class Juego {
       return j.getNombre() != this.#jugadorActual.getNombre();
     });
     return jugador;
+  }
+  hayUnGanador(columna, fila) {
+    let max = this.#tablero.getN();
+
+    return (
+      this.#tablero.verificarDiagonal1(columna, fila).length == max ||
+      this.#tablero.verificarDiagonal2(columna, fila).length == max ||
+      this.#tablero.verificarFila(columna, fila).length == max ||
+      this.#tablero.verificarColumna(columna, fila).length == max
+    );
   }
 }
 let img1 = new Image();

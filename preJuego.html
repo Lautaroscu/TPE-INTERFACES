@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Game</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./src/styles/juego.css" />
+  </head>
+  <body>
+    <section class="customGame">
+      <form id="formCustom">
+        <label for="namePlayerOne">Nombre jugador uno:</label><br />
+        <input type="text" name="namePlayerOne" /><br />
+
+        <label for="imagePlayerOne">Ficha jugador uno:</label><br />
+        <input name="img1" type="file" />
+
+        <label for="namePlayerTwo">Nombre jugador dos:</label><br />
+        <input type="text" name="namePlayerTwo" /><br />
+
+        <label for="imagePlayerTow">Ficha jugador dos:</label><br />
+        <input name="img2" type="file" />
+
+        <label for="columnsGame">Dimension</label>
+        <select name="dimensions">
+          <option value="6x7">6x7 (estandar)</option>
+          <option value="4x4">7x8</option>
+          <option value="5x5">5x5</option>
+        </select>
+
+        <button type="submit">Crear juego</button>
+      </form>
+    </section>
+  </body>
+</html>
