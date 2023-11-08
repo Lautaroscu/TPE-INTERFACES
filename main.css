@@ -1,3 +1,32 @@
+:root {
+  --negro: #0c0d14;
+  --icons: #878a9e;
+  --blanco: #fefefe;
+  --gris_claro: #e3e3e3;
+  --gris_oscuro: #373952;
+  --acento: #ffd700;
+  --primario: #064785;
+  --primario-c1: #007cf2;
+  --primario-c2: #007cf2;
+  --primario-c3: #8ebeec;
+  --primario-o1: #04396c;
+  --primario-o2: #02294e;
+  --primario-o3: #011b34;
+  --secundario: #cc0174;
+  --secundario-c1: #e94da5;
+  --secundario-c3: #f8a7d5;
+  --secundario-o1: #900554;
+  --secundario-o2: #570031;
+  --secundario-o3: #2b071b;
+
+  --body: 16px bolder, Arial, Roboto;
+  --h1: 24px bolder;
+  --h2: 22px bolder;
+  --h3: 20px bold;
+  --textoBotones: 14px bold;
+  --bodyMobile: 8px bolder, Arial, Roboto;
+  -
+}
 * {
   margin: 0;
   padding: 0;

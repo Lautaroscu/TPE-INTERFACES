@@ -6,6 +6,7 @@ export default class Ficha {
   #contex;
   static #nextId = 0;
   #id;
+  #disponible;
 
   constructor(cara, posX, posY, context) {
     this.#cara = cara;
@@ -13,8 +14,10 @@ export default class Ficha {
     this.#posY = posY;
     this.#contex = context;
     this.draw();
+    this.resaltado = false;
     this.#id = Ficha.#nextId;
     ++Ficha.#nextId;
+    this.#disponible = true;
   }
   draw() {
     let ctx = this.#contex;
@@ -41,6 +44,16 @@ export default class Ficha {
   static setSize(size) {
     Ficha.#size = size;
   }
+  getDisponible() {
+    return this.#disponible;
+  }
+  setDisponible(d) {
+    this.#disponible = d;
+  }
+  getCara() {
+    return this.#cara;
+  }
+  setCara(img) {}
   setCara(cara) {
     this.#cara = cara;
   }
@@ -67,5 +80,23 @@ export default class Ficha {
   }
   getId() {
     return this.#id;
+  }
+  setDisponible(s) {
+    this.#disponible = s;
+  }
+  setPosition(x, y) {
+    this.#posX = x;
+    this.#posY = y;
+  }
+
+  getPosition() {
+    return this.getX(), this.getY();
+  }
+
+  isPointInside(x, y) {
+    let _x = this.#posX - x;
+    let _y = this.#posY - y;
+
+    return Math.sqrt(_x * _x + _y * _y) < Ficha.#size;
   }
 }

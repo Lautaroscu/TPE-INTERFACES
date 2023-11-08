@@ -31,10 +31,11 @@ export default class Tablero {
 
   draw() {
     let ctx = this.#context;
+
     ctx.beginPath();
 
     ctx.rect(this.#x, this.#y, this.#width, this.#height);
-
+    ctx.fillStyle = "#0c0d14";
     ctx.closePath();
     ctx.fill();
     this.cargarFichas();
@@ -55,8 +56,9 @@ export default class Tablero {
       hovers.appendChild(hover);
       hovers.style.display = "flex";
       hovers.style.flexDirection = "row";
-      hover.style.width = `${hovers.offsetWidth / this.#columnas}px`;
+      hover.style.width = `${this.#width / this.#columnas}px`;
       hover.style.border = "1px solid black";
+      console.log(hover);
 
       let filas = [];
       let nuevoHeight = this.#y + fichaHeight / 2;
@@ -81,13 +83,7 @@ export default class Tablero {
     }
   }
   getSize() {
-    let cont = 0;
-    for (let i = 0; i < this.#columnas; i++) {
-      for (let j = 0; j < this.#filas; j++) {
-        cont++;
-      }
-    }
-    return cont;
+    return this.#filas * this.#columnas;
   }
   estaOcupado(fila, columna) {
     if (this.tablero[columna][fila].getCara() != null) {
@@ -286,5 +282,11 @@ export default class Tablero {
   }
   getN() {
     return this.#N;
+  }
+  getX() {
+    return this.#x;
+  }
+  getY() {
+    return this.#y;
   }
 }

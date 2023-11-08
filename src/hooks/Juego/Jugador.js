@@ -12,4 +12,10 @@ export default class Jugador {
   getNombre() {
     return this.#nombre;
   }
+  setFicha(f) {
+    this.#ficha = f;
+  }
+  setNombre(n) {
+    this.#nombre = n;
+  }
 }

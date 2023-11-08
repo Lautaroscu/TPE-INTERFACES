@@ -410,30 +410,59 @@
     <div class="navbar">
       Home > Categoria > Puzzles > <span>4 en linea </span>
     </di>
+    <section class="customGame">
+      <form id="formCustom">
+        <label for="namePlayerOne">Nombre jugador uno: *</label><br />
+        <input required type="text" name="namePlayerOne" /><br />
+
+    
+
+        <label for="namePlayerTwo">Nombre jugador dos: *</label><br />
+        <input  required type="text" name="namePlayerTwo" /><br />
+
+        <h2 style="padding: 5px;" id="elegirFicha">Jugador 1 :</h2>
+        <div class="imgs" id="imgs2"><img src="./src/assets/images/flag_mx.webp" class="img"><img src="./src/assets/images/flag_br.webp" class="img"><img src="./src/assets/images/flag_en.webp" class="img"><img src="./src/assets/images/flag_it.webp" class="img"><img src="./src/assets/images/flag_nl.webp" class="img"><img src="./src/assets/images/flag_es.webp" class="img"></div>
+
+        <label for="columnsGame">Dimension</label>
+        <select name="dimension">
+          <option value="4">4 en linea</option>
+          <option value="5">5 en linea</option>
+          <option value="6">6 en linea</option>
+          <option value="7">7 en linea</option>
+        </select>
+
+        <button id="crearJuego" type="submit">Crear juego</button>
+      </form>
+    </section>
     <section class="paginaJuego">
       <div class="juego">
         <div class="nombresJugadores">
-          <div>
-            <h3>CAPITAN AMERICA</h3>
-            <img
-              src="./src/assets/images/capitanAmetica.jpg"
-              alt="imagen cap america"
-            />
-            <h2>2</h2>
+          <div class="player">
+            <h3 id="namePlayer1"></h3>
+            <figure id="imgPlayer1" class="img-user-game"></figure>
           </div>
-          <h2>-</h2>
-          <div>
-            <h2>0</h2>
-            <img
-              src="./src/assets/images/spidermean.jpg"
-              alt="imagen spiderman"
-            />
-            <h3>SPIDERMAN</h3>
-          </div>
+          <h2 id="timer"></h2>
+           <div class="player">
+            <figure id="imgPlayer2" class="img-user-game"></figure>
+            <h3 id="namePlayer2"></h3>
+           </div>
+          
+  
         </div>
-        <div id="hovers"></div>
-        <canvas height="400" width="1200" id="canvas"></canvas>
+          <div id="hovers"></div>
+          <canvas height="400" width="1200" id="canvas">  
+
+          </canvas>
        
+
+        </section>
+  
+        <section class="showModal">
+          <p>¡El ganador es!</p>
+          <h2 id="ganador"></h2>
+          <button onclick="location.reload()">Volver a jugar</button>
+        </section>
+        </section>
 
         <section>
           <a href="compartir.html"
@@ -567,8 +596,9 @@
         </div>
       </div>
     </section>
-    <script type="module"  src="./src/hooks/Juego/Juego.js"></script>
-    <script type="module" src="./src/hooks/Juego/Tablero.js"></script>
+ 
+
+    <script type="module" src="./src/hooks/Juego/SetJuego.js"></script>
 
     <script type="module" src="./main.js"></script>
     

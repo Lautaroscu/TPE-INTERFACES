@@ -38,7 +38,7 @@ async function Home() {
       window.location.href = "./juego.html";
     });
 }
-document.querySelector(".home").style.opacity = 0;
+document.querySelector(".home").style.display = "none";
 CSS.registerProperty({
   name: "--p",
   syntax: "<integer>",
@@ -50,7 +50,7 @@ function ocultarElementoDespuesDe5Segundos() {
   setTimeout(function () {
     document.querySelector(".loadingDiv").style.display = "none";
     console.log(document.querySelector(".home"));
-    document.querySelector(".home").style.opacity = 1;
+    document.querySelector(".home").style.display = "block";
   }, 5000);
 }
 
